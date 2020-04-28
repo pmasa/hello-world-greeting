@@ -25,7 +25,7 @@ agent any
    stage ('Integration Test'){
     steps{
         sh 'mvn clean verify -Dsurefire.skip=true'; 
-        junit '**/target/failsafe-reports/TEST-*.xml' archive 'target/*.jar'
+        junit '**/target/failsafe-reports/TEST-*.xml'
      }
    }
    stage ('Publish'){
