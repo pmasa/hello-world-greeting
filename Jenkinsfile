@@ -1,4 +1,11 @@
-node('docker') {
+pipeline {
+ environment {
+ registry = "pedromasa/webapp"
+ registryCredential = 'dockerhub'
+ dockerImage = ''
+ } 
+agent any
+ stages {
   stage('Poll') {
      checkout scm
    }
@@ -28,4 +35,5 @@ node('docker') {
           ] }"""
         server.upload(uploadSpec) 
         }
+   }
 }
