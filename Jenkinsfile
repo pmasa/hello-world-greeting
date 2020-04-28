@@ -28,10 +28,6 @@ agent any
         junit '**/target/failsafe-reports/TEST-*.xml'
      }
    }
-   stage ('Publish'){
-    steps{
 
-        }
-    }
    }
 }
