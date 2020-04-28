@@ -13,7 +13,7 @@ agent any
    }
   stage('Build & Unit test'){
    steps{
-        sh 'mvn clean verify -DskipITs=true';
+        sh 'mvn clean verify -DskipITs=true'
         junit '**/target/surefire-reports/TEST-*.xml' archive 'target/*.jar'
     }
    }
