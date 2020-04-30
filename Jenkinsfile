@@ -13,19 +13,19 @@ agent any
    }
   stage('Build & Unit test'){
    steps{
-        sh 'mvn clean verify -DskipITs=true';
-        junit '**/target/surefire-reports/TEST-*.xml'       
+        
+        echo 'Hello, Maven'
+           
     }
    }
    stage('Static Code Analysis'){
     steps{
-        sh 'mvn clean verify sonar:sonar -Dsonar.projectName=ci-project -Dsonar.projectKey=ci-project -Dsonar.projectVersion=$BUILD_NUMBER -Dsonar.host.url=http://192.168.0.114:9000';
+        sh 'mvn sonar:sonar -Dsonar.projectName=ci-project -Dsonar.projectKey=ci-project -Dsonar.projectVersion=$BUILD_NUMBER -Dsonar.host.url=http://192.168.0.114:9000';
      }
     }
    stage ('Integration Test'){
     steps{
-        sh 'mvn clean verify -Dsurefire.skip=true'; 
-        junit '**/target/failsafe-reports/TEST-*.xml'
+        echo 'Hello, SonarQube'
      }
    }
 
